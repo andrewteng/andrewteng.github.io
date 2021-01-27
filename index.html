@@ -30,6 +30,11 @@
             height: 45%;
             width: 45%;
         }
+        
+        img.three {
+            height: 60%;
+            width: 60%;
+        }
     </style>
 </head>
     
@@ -37,26 +42,6 @@
     
 <body id="top">
     <header id="home">
-        <nav>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                        <nav class="pull">
-                            <ul class="top-nav">
-                                <center><p></p>
-                                    <li>
-                                        &emsp;<span title="LinkedIn"/><a href="https://linkedin.com/in/tengandrew" target ="_blank" class="fa fa-linkedin fa-lg"></a>&emsp;
-                                        <span title="GitHub"/><a href="https://github.com/andrewteng" target ="_blank" class="fa fa-github fa-lg"></a>&emsp;
-                                        <span title="Twitter"/><a href="https://twitter.com/theandrewteng" target ="_blank" class="fa fa-twitter fa-lg"></a>&emsp;
-                                        <span title="Google Scholar"/><a href="https://scholar.google.com/citations?user=TIJBnKMAAAAJ&hl=en" target ="_blank" class="ai ai-google-scholar ai-lg"></a>
-                                     </li>
-                                </center>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </nav>
 
         <section class="bottom" id="bottom">
             <div class ="container">
@@ -78,13 +63,20 @@
                     <div class="col-md-12">          
                     <h1 class="arrow"></h1>
                     <div class="tabbable">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#about" data-toggle="tab">about</a></li>
-                            <li><a href="#education" data-toggle="tab">education</a></li>
-                            <li><a href="#projects" data-toggle="tab">projects</a></li>
-                            <li><a href="#publications" data-toggle="tab">publications</a></li>
-                            <li><a href="#presentations" data-toggle="tab">presentations</a></li>
+                        <ul class="nav nav-tabs form-tabs hidden-xs">
+                            <li class="tab-selector active"><a href="#about" data-toggle="tab">about</a></li>
+                            <li class="tab-selector"><a href="#education" data-toggle="tab">education</a></li>
+                            <li class="tab-selector"><a href="#projects" data-toggle="tab">projects</a></li>
+                            <li class="tab-selector"><a href="#publications" data-toggle="tab">publications</a></li>
+                            <li class="tab-selector"><a href="#presentations" data-toggle="tab">presentations</a></li>
                         </ul>
+                        <select class="form-control visible-xs" id="tab_selector">
+                            <option value="0">about</option>
+                            <option value="1">education</option>
+                            <option value="2">projects</option>
+                            <option value="3">publications</option>
+                            <option value="4">presentations</option>
+                        </select>
                         <div class="tab-content">
                             <div id="about" class="tab-pane fade in active">
                                 <center><br><br>
@@ -107,19 +99,38 @@
                                 <div class="row">
                                     <div class ="col-xs-4">Georgia Institute of Technology (Atlanta, GA)&emsp;<i><br><font color="gray">08/2015-12/2016</font></i>
                                     </div>
-                                    <div class ="col-xs-5">Bioinformatics MS&emsp;<i><br><font color="gray">Mentor: Dr. Joseph Lachance (Assistant Professor - Biology)<br><br>Awards: Computational Biology Faculty Graduate Research Assistant Award (Spring 2016 and Fall 2016)</font></i>
+                                    <div class ="col-xs-5">Bioinformatics MS&emsp;<i><br><font color="gray">Mentor: Dr. Joseph Lachance (Assistant Professor - Biology)<br><br>Awards: Computational Biology Faculty Graduate Research Assistant Award (Spring 2016 and Fall 2016)<br><br>Summer internship: National Cancer Institute/ Division of Cancer Epidemiology and Genetics (DCEG)</font></i>
                                     </div>
-                                    <div class ="col-xs-3"><center><img class="two" src="img/gatech.gif" alt="GaTech_Logo" height="20"></center></div>
+                                    <div class ="col-xs-3"><center><img  src="img/gatech.gif" class="three" alt="GaTech_Logo" height="50"><br><br><br><br><img class="three" src="img/logos.png" alt="HHS_NIH_NCI_Logos" height="50"></center></div>
                                 </div><br><br>
                                 <div class="row">
                                     <div class ="col-xs-4">Emory University (Atlanta, GA)&emsp;<i><br><font color="gray">08/2012-05/2015</font></i>
                                     </div>
                                     <div class ="col-xs-5">Mathematics and Computer Science BS&emsp;<i><br><font color="gray"></font></i>
                                     </div>
-                                    <div class ="col-xs-3"><center><img class="two" src="img/eu-logo.png" alt="Emory_Logo" height="20"></center></div>
+                                    <div class ="col-xs-3"><center><img src="img/eu-logo.png" class="three" alt="Emory_Logo" height="40"></center></div>
                                 </div>
                             </div>
                             <div id="projects" class="tab-pane fade"><br><br>
+
+                                <div class="row">
+                                    <div class ="col-xs-9">CO-MAP-V: COVID-19 Massachussetts Map and Visualization Tool&emsp;<a target="_blank" href="https://co-map-v.github.io/" class="fa fa-external-link"></a><i>
+                                        <br><font color="gray">Class Project (CSE 583: Software Development for Data Scientists)</i><br>
+                                        Used synthetic data from Synthea that was formatted in an OMOP Common Data model to visualize the start of a COVID-19 outbreak in Massachussetts. Created various visualizations, both geographical and statistical, to showcase a dashboard like design that allows users to explore and compare between months and counties. Visualizations were created using Plotly and arranged using Dash, the website uses Bootstrap and the dashboard application is hosted on Heroku allowing for final (and interactive) hosting on GitHub Pages. 
+                                        </font></div>
+                                    <div class ="col-xs-3">
+                                        <center><img src="https://co-map-v.github.io/website/img/logo.png" alt="COMAPV_Logo" height="80"></center>
+                                    </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class ="col-xs-9">Visualizing Algorithmic Cause of Death Predictions&emsp;<a target="_blank" href="https://cse512-19s.github.io/FP-Visualizing-Algorithmic-Cause-of-Death-Predictions/" class="fa fa-external-link"></a><i>
+                                        <br><font color="gray">Class Project (CSE 512: Data Visualization)</i><br>
+                                        Used verbal autopsy data to visualize relationships between causes of death, symptoms, death, region, and algorithm. Four different and interactive visualizations were created using D3. All visualizations interact with each other in terms of dataset and can be used congruently to allow users a deeper exploration of the data from various perspectives. 
+                                        </font></div>
+                                    <div class ="col-xs-3">
+                                        <center><img class="two" src="img/github.png" alt="GitHub_Logo" height="80"></center>
+                                    </div>
+                                </div><br><br>
 
                                 <div class="row">
                                     <div class ="col-xs-9">Predictive Analytics Solutions for Sepsis Patients in Acute Care&emsp;
@@ -153,10 +164,10 @@
                                     </div>
                                 </div><br><br>
                                 <div class="row">
-                                    <div class ="col-xs-9">Leveraging Mobile Technologies to Communicate Genetic Testing Information&emsp;<a target="_blank" href="doc/Project%20Proposal.pdf" class="fa fa-file-pdf-o"></a><i>
-                                        <br><font color="gray">Class Project (BIME 554: Biomedical Information Interactions and Design)</i><br>Performed workflow analysis and stakeholder interviews to identify points where mobile technologies could be leveraged to reduce workload on administrative staff, increase clinic efficiency and provide better services to patients. Team identified three major areas where changes patient in-take, insurance authorization and return of results. I created a potential design solution to revamp patient in-take by making an online tool accessible by patients that would collect family history and develop a patient pedigree.</font></div>
+                                    <div class ="col-xs-9">Leveraging Mobile Technologies to Communicate Genetic Testing Information&emsp;<a target="_blank" href="doc/Project%20Proposal.pdf" class="fa fa-file-pdf-o"></a>
+                                        <br><font color="gray"><i>Class Project (BIME 554: Biomedical Information Interactions and Design)</i><br>Performed workflow analysis and stakeholder interviews to identify points where mobile technologies could be leveraged to reduce workload on administrative staff, increase clinic efficiency and provide better services to patients. Team identified three major areas where changes patient in-take, insurance authorization and return of results. I created a potential design solution to revamp patient in-take by making an online tool accessible by patients that would collect family history and develop a patient pedigree.</font></div>
                                         <div class ="col-xs-3">
-                                            <center><img class="two" src="img/UW_GMC.png" alt="UWGMC_Logo" height="40"></center>
+                                            <center><img class="three" src="img/UW_GMC.png" alt="UWGMC_Logo" height="40"></center>
                                         </div>
                                 </div><br><br>
                                 <div class="row">
@@ -178,7 +189,7 @@
                                         <br><font color="gray">Summer Project, Mentor: Dr. Kai Yu</i><br>Full genome analysis and exploration of HPV 16 to create a prediction model to forecast cervical cancer likelihood and risk. The	primary	focus was to identify the viral genetic basis of HPV carcinogenicity and to globally analyze the differences patients with and without cervical cancer through random forest classification.</font>
                                     </div>
                                     <div class ="col-xs-3">
-                                            <center><img class="two" src="img/logos.png" alt="HHS_NIH_NCI_Logos" height="40"></center>
+                                            <center><img class="three" src="img/logos.png" alt="HHS_NIH_NCI_Logos" height="40"></center>
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -194,7 +205,7 @@
                                         <br><font color="gray">Class Project (BIOL7210A: Computational Genomics)</i><br>Used unassembled genome sequence data from the Centers for Disease Control and Prevention (CDC) for computational genomics. Participated in two groups (gene prediction and functional annotation). </font>
                                     </div>
                                     <div class ="col-xs-3">
-                                        <center><img class="two" src="img/hhs-cdc-logo.svg" alt="CDC_Logo" height="30"></center>
+                                        <center><img class="three" src="img/hhs-cdc-logo.svg" alt="CDC_Logo" height="30"></center>
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -203,7 +214,7 @@
                                         <br><font color="gray">Class Project (BME 8813: Biomedical and Health Informatics)</i><br>Used data from the World Health Organization (WHO), CDC, and Virginia Polytech Institute and State University. Compared and validated the prediction powers of various compartmental models. Created a MATLAB GUI (<a target="_blank" href="https://www.youtube.com/watch?v=hMcYuk1tW7c" class="fa fa-youtube-play"></a><a target="_blank" href="https://www.youtube.com/watch?v=hMcYuk1tW7c"> video demo</a>) to allow for easy comparison between models and countries of interest. </font>
                                     </div>
                                     <div class ="col-xs-3">
-                                        <center><img class="two" src="img/gatech.gif" alt="GaTech_Logo" height="35"></center>
+                                        <center><img class="three" src="img/gatech.gif" alt="GaTech_Logo" height="35"></center>
                                     </div>
                                 </div><br><br>
                                 <div class="row">
@@ -212,12 +223,16 @@
                                         <br>- Analysis of the Early Stages of HIV-1 Infection on Components of the Human Immune Response</font>
                                     </div>
                                     <div class ="col-xs-3">
-                                        <center><img class="two" src="img/gatech.gif" alt="GaTech_Logo" height="35"></center>
+                                        <center><img class="three" src="img/gatech.gif" alt="GaTech_Logo" height="35"></center>
                                     </div>
                                 </div>
                             </div>
                             <div id="publications" class="tab-pane fade"> 
                                 <br><br>
+                                <div class="row">
+                                    <div class ="col-xs-9">Promoting Problem Solving About Health Management: A Mixed-Methods Pilot Evaluation of a Digital Health Intervention for Older Adults With Pre-Frailty and Frailty&emsp;<i><a target="_blank" href="https://doi.org/10.1177/2333721420985684" class="fa fa-external-link"></a><br><font color="gray">Chen AT, Chu F, <strong>Teng AK</strong>, Han S, Lin SY, Demiris G, Zaslavsky O</font></i></div>
+                                    <div class ="col-xs-3"><center><img class = "three" src="img/ggm.gif" alt="GerontologyAndGeriatricMedicine_Logo" height="15"></center></div>
+                                </div><br><br>
                                 <div class="row">
                                     <div class ="col-xs-9">Reactions to COVID-19, Information and Technology Use, and Social Connectedness among Older Adults with Pre-Frailty and Frailty&emsp;<i><a target="_blank" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7416746/" class="fa fa-external-link"></a><br><font color="gray">Chen AT, Ge S, Cho S, <strong>Teng AK</strong>, Chu F, Demiris G, Zaslavsky O</font></i></div>
                                     <div class ="col-xs-3"><center><img class = "two" src="img/gn.png" alt="GeriatricNursing_Logo" height="15"></center></div>
@@ -243,7 +258,11 @@
                             <div id="presentations" class="tab-pane fade">
                                 <br><br>
                                 <div class="row">
-                                    <div class ="col-xs-9">Extracting housing stability concepts from clinical text notes&emsp;<i><br>National Library of Medicine 2020 Informatics Training Conference<br><font color="gray"><strong>Teng AK</strong>, Wilcox AB</font></i></div>
+                                    <div class ="col-xs-9">Housing Stability Phenotype Extracted from Clinical Text Notes and Diagnosis Codes&emsp;<i><br>American Medical Informatics Association (AMIA) 2020 Virtual Annual Symposium<br><font color="gray"><strong>Teng AK</strong>, Wilcox AB</font></i></div>
+                                    <div class ="col-xs-3"><center><img class="two" src="img/amia.png" alt="AMIA_Logo" height="5"></center></div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class ="col-xs-9">Extracting housing stability concepts from clinical text notes&emsp;<i><br>National Library of Medicine 2020 Virtual Informatics Training Conference<br><font color="gray"><strong>Teng AK</strong>, Wilcox AB</font></i></div>
                                     <div class ="col-xs-3"><center><img class="two" src="img/nlm.png" alt="NLM_Logo" height="5"></center></div>
                                 </div><br><br>
                                 <div class="row">
@@ -293,9 +312,14 @@
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider.js"></script>
     <script src="js/modernizr.js"></script>
+    <script>
+        $('#tab_selector').on('change', function (e) {
+	    $('.form-tabs li a').eq($(this).val()).tab('show');
+	});
+    </script>
 
     
-    <section class="bottom" id="bottom">
+    <section class="bottom1" id="bottom1">
     <div class="row">
         <br><br><div align="center"><font size="2" color="#A9A9A9">
                 <span title="Email"/><a href="mailto:akteng@uw.edu" target ="_blank" class="fa fa-envelope-o fa-lg"></a>&emsp;&emsp;
@@ -306,7 +330,7 @@
                 <span title="SoundCloud"/><a href="https://soundcloud.com/tengandrew" target ="_blank" class="fa fa-soundcloud fa-lg"></a>
         </font></div>
         <p></p><div align="center"><font size="1" color="#A9A9A9">
-            <!--Copyright &copy 2016-2018&emsp;|&emsp;-->Last Updated: 16 September 2020
+            <!--Copyright &copy 2016-2018&emsp;|&emsp;-->Last Updated: 26 January 2021
         </font></div><br>
     </div>
     </section>
