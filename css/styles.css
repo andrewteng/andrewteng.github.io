@@ -26,7 +26,7 @@ Base
 html { font-size: 100%; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
 -ms-text-size-adjust: 100%; /* 2 */ }
-html, html a { -webkit-font-smoothing: antialiased; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }
+html, html a, a1 { -webkit-font-smoothing: antialiased; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }
 /* * Addresses `font-family` inconsistency between `textarea` and other form
 * elements. */
 html, button, input, select, textarea { font-family: 'Varela Round', sans-serif; }
@@ -38,8 +38,10 @@ Links
 /* * Addresses `outline` inconsistency between Chrome and other browsers. */
  
 a:focus { outline: none; }
+a1:focus { outline: none; }
 /* * Improves readability when focused and also mouse hovered in all browsers. */
 a:active, a:hover { outline: 0; }
+a1:active, a:hover { outline: 0; }
 /* ==========================================================================
 Typography
 ========================================================================== */
@@ -54,9 +56,17 @@ h5 { font-size: 0.83em; margin: 1.67em 0; }
 h6 { font-size: 0.75em; margin: 2.33em 0; }
 
 a { color: #353535; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
-a:hover, a:focus { color: #3396FF; text-decoration: none; }
+a:hover, a:focus { color: #0F52BA; text-decoration: none; }
+a1:hover, a:focus { color: #0F52BA; text-decoration: none; }
+
 p { color: #8c9398; word-spacing: 1px; line-height: 25px; font-size: 14px; }
+p1 { color: #424949; word-spacing: 1px; line-height: 25px; font-size: 14px; }
+a1 { color: #478778; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
 
 .home {padding: 40px;}
 .bottom {background-color: whitesmoke;}
 .bottom1 {background-color: whitesmoke; width: 100%; position: relative; bottom: 0;}
+
+img {
+  border-radius: 1.5%;
+}
