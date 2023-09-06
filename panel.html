@@ -19,19 +19,28 @@
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon"/>
     
 </head>
-    
+
 <body>
     <header>
-        <div class="container">
-            <div class="row">
-                <center>
-                    <script src="https://cdn.logwork.com/widget/text.js"></script>
-                    <a href="https://logwork.com/current-time-in-bellevue-united-states-washington" class="clock-widget-text" data-timezone="America/Los_Angeles" data-language="en">Bellevue</a>
-                </center>
+        <section class="bottom" id="bottom">
+            <div class ="container">
+                <div class="row">
+                    <div align="center"><br><br>
+                        Sir Andrew,
+                        <font size="6" color= "#606060">
+                            <div id="lbl"></div>
+                        </font>
+                        <font size="8" color= "#606060">
+                            <div id="lbl1"></div>
+                        </font>
+                        <div id="lbl2"></div>
+                        <br><br><br>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <script>
+    <script>
         (function(d, s, id) {
             if (d.getElementById(id)) {
                 if (window.__TOMORROW__) {
@@ -79,6 +88,45 @@
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider.js"></script>
     <script src="js/modernizr.js"></script>
+    <script>
+        
+    function addZero(i) {
+      if (i < 10) {i = "0" + i}
+      return i;
+    }
+        
+    var weekday = new Array(7);
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tues";
+    weekday[3] = "Wed";
+    weekday[4] = "Thur";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+    
+    var today = new Date();
+    var hrs = today.getHours();
+    var dayOfWeek = weekday[today.getDay()];
+    var date = dayOfWeek+" "+(today.getUTCMonth()+1)+ "/" + today.getUTCDate();
+    var time = today.getHours() + ":" + addZero(today.getMinutes());
+    var greet;
+
+    if (hrs < 12)
+        greet = ' Good Morning  ';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = ' Good Afternoon  ';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = ' Good Evening   ';
+
+    document.getElementById('lbl').innerHTML =
+        greet;
+    
+    document.getElementById('lbl1').innerHTML =
+        `<div id="time">${time}</div>`;
+    
+    document.getElementById('lbl2').innerHTML =
+        `<div id="date">${date}</div>`;
+</script> 
 </body>
 </html>
 
