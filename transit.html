@@ -7,12 +7,15 @@
     <!-- Bootstrap Icons CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             background-color: #0d0d0d;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 30px;
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,22 +27,23 @@
         header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             border-bottom: 2px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
         }
         .header-left {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
         .clock {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             line-height: 1;
+            font-weight: bold;
         }
         .date {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: #aaa;
             font-weight: 500;
         }
@@ -47,26 +51,24 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
         }
         /* Weather Widget Styling */
         .weather-widget {
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             text-align: right;
         }
         .weather-temp {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             line-height: 1;
+            font-weight: bold;
         }
 
         /* Collapsable Section Styling */
         .collapsable-section {
             background-color: #141414;
             border-radius: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             border: 1px solid #2a2a2a;
             overflow: hidden;
@@ -75,7 +77,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 25px;
+            padding: 16px 20px;
             background-color: #1a1a1a;
             cursor: pointer;
             user-select: none;
@@ -85,19 +87,19 @@
             background-color: #222222;
         }
         .section-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             letter-spacing: -0.5px;
         }
         .section-icon {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #ffc72c;
         }
         .section-toggle-icon {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #aaa;
             transition: transform 0.3s ease;
         }
@@ -105,11 +107,10 @@
             transform: rotate(-90deg);
         }
         .section-content {
-            padding: 20px 25px 5px 25px;
+            padding: 15px 15px 5px 15px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            transition: max-height 0.3s ease-out, opacity 0.2s ease;
+            gap: 15px;
         }
         .collapsable-section.collapsed .section-content {
             display: none;
@@ -118,7 +119,7 @@
         .board {
             background-color: #1e1e1e;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             border: 1px solid #282828;
         }
@@ -126,82 +127,87 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid #2e2e2e;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
         .agency-title {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            min-width: 0;
         }
         .stop-id {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #888;
+            flex-shrink: 0;
+            margin-left: 8px;
         }
 
         /* Badges */
         .kcm-badge { 
             color: #000; 
             background-color: #ffc72c; 
-            padding: 4px 10px; 
+            padding: 4px 8px; 
             border-radius: 4px; 
             font-size: 0.75rem; 
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
         }
         .st-badge { 
             color: #fff; 
             background-color: #005daa; 
-            padding: 4px 10px; 
+            padding: 4px 8px; 
             border-radius: 4px; 
             font-size: 0.75rem; 
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
         }
 
         .arrival-row {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            padding: 12px 0;
+            align-items: center;
+            padding: 10px 0;
             border-bottom: 1px solid #282828;
-            gap: 20px;
+            gap: 10px;
         }
         .arrival-row:last-child {
             border-bottom: none;
         }
         .route-info {
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
             flex: 1;
-            min-width: 0;
+            min-width: 0; /* Important for dynamic text truncation */
         }
         .route-num {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 900;
-            min-width: 80px;
+            min-width: 55px;
             display: inline-flex;
             align-items: center;
             flex-shrink: 0;
-            gap: 6px;
+            gap: 4px;
         }
         .bus-route {
             color: #ffc72c;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 900;
         }
         .b-line-badge {
             color: #fff;
             background-color: #dc2626;
-            padding: 2px 10px;
+            padding: 2px 8px;
             border-radius: 6px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 900;
             display: inline-flex;
             align-items: center;
@@ -210,13 +216,13 @@
         
         /* Circular Line Badges */
         .line-badge {
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: #000;
             flex-shrink: 0;
@@ -226,42 +232,42 @@
         .st-line-default { background-color: #00a3e0; color: #000; }
 
         .airplane-indicator {
-            font-size: 2rem;
-            margin-left: 5px;
+            font-size: 1.4rem;
+            margin-left: 2px;
         }
 
+        /* Mobile Ellipsis Truncation for Destinations */
         .destination {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 500;
             color: #e5e5e5;
-            white-space: normal;
-            overflow: visible;
-            word-break: break-word;
-            display: flex;
-            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+            min-width: 0;
         }
         .countdown-group {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             justify-content: flex-end;
-            flex-wrap: nowrap;
             flex-shrink: 0;
-            margin-left: 20px;
+            margin-left: 10px;
         }
         .countdown-item {
             display: inline-flex;
             align-items: center;
-            gap: 0px;
             font-size: 1.2rem;
+            font-weight: 600;
         }
         .rt-icon {
-            font-size: 0.99rem;
+            font-size: 0.85rem;
             color: #22c55e;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            vertical-align: middle;
+            margin-left: 2px;
         }
         .rt-icon i {
             transform: rotate(50deg);
@@ -286,6 +292,68 @@
             font-style: italic;
             text-align: center;
             padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints for Mobile Phones */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px 8px;
+            }
+            .clock, .weather-temp {
+                font-size: 1.8rem;
+            }
+            .date {
+                font-size: 0.85rem;
+            }
+            .section-header {
+                padding: 14px 15px;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+            .section-content {
+                padding: 10px 8px 2px 8px;
+            }
+            .board {
+                padding: 12px;
+            }
+            .agency-title {
+                font-size: 0.85rem;
+            }
+            .kcm-badge, .st-badge {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+            }
+            .route-num {
+                min-width: 42px;
+                font-size: 1.3rem;
+            }
+            .bus-route {
+                font-size: 1.3rem;
+            }
+            .line-badge {
+                width: 28px;
+                height: 28px;
+                font-size: 0.95rem;
+            }
+            .b-line-badge {
+                font-size: 1rem;
+                padding: 1px 6px;
+            }
+            .airplane-indicator {
+                font-size: 1.1rem;
+            }
+            .destination {
+                font-size: 0.9rem;
+            }
+            .countdown-item {
+                font-size: 1rem;
+            }
+            .countdown-group {
+                gap: 5px;
+                margin-left: 6px;
+            }
         }
     </style>
 </head>
@@ -700,7 +768,7 @@
                 }
 
                 const rtIconHtml = item.isRealTime ? '<span class="rt-icon" title="Live Real-time Tracking"><i class="bi bi-wifi-2"></i></span>' : '';
-                const comma = idx < group.arrivals.slice(0, 3).length - 1 ? '<span style="color:#666; margin-right:4px;">,</span>' : '';
+                const comma = idx < group.arrivals.slice(0, 3).length - 1 ? '<span style="color:#666; margin-right:3px;">,</span>' : '';
 
                 return `<span class="countdown-item ${extraClass}">${countdownText}${rtIconHtml}${comma}</span>`;
             }).join("");
@@ -711,7 +779,7 @@
                         <div class="route-num">
                             ${routeDisplayHtml}
                         </div>
-                        <div class="destination">${group.dest}</div>
+                        <div class="destination" title="${group.dest}">${group.dest}</div>
                     </div>
                     <div class="countdown-group">
                         ${countdownsHtml}
