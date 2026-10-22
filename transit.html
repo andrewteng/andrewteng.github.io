@@ -300,7 +300,7 @@ justify-content: center;
 margin-left: 0px;
 }
 .rt-icon i {
-            transform: rotate(50deg);
+    transform: rotate(50deg);
 }
 .due {
 color: hsl(28, 100%, 50%);
@@ -491,13 +491,27 @@ margin-left: 6px;
 <div class="loading">Fetching live arrivals...</div>
 </div>
 </div>
+
+<!-- Bus Board: Stop #81301 (333 Mountlake Terrace & 345 Northgate) -->
+<div class="board">
+<div class="board-header">
+<div class="agency-title">
+<span class="kcm-badge"><i class="bi bi-bus-front-fill"></i> Shoreline S/148th Station • Bay 2</span>
+</div>
+<div class="stop-id">#81301</div>
+</div>
+<div id="work-stop-81301-arrivals">
+<div class="loading">Fetching live arrivals...</div>
 </div>
 </div>
+</div>
+</div>
+
 <!-- BELLEVUE SECTION (Collapsed by default) -->
 <div class="collapsable-section collapsed" id="section-bellevue">
 <div class="section-header" onclick="toggleSection('section-bellevue')">
 <div class="section-title">
-<i class="bi bi-house-door section-icon" style="color: #008000;"></i> ∞ &gt; Bellevue
+<i class="bi bi-house-door section-icon" style="color: #008000;"></i> ∞ &gt; Bellevue/Lake Hills
 </div>
 <i class="bi bi-chevron-down section-toggle-icon"></i>
 </div>
@@ -582,6 +596,8 @@ const BUS_333_STOP = "1_75160";
 const BUS_345_STOP = "1_6880";
 const WESTLAKE_SB_STOP = "40_1108";
 const WESTLAKE_NB_STOP = "40_1121";
+const WORK_STOP_81301 = "1_81301";
+
 // Bellevue section stops
 const BVUE_STOP_10912 = "1_10912";
 const BVUE_STOP_68007 = "1_68007";
@@ -597,6 +613,7 @@ const lastKnownData = {
 "bus-345-arrivals": [],
 "westlake-sb-arrivals": [],
 "westlake-nb-arrivals": [],
+"work-stop-81301-arrivals": [],
 "bvue-stop-10912-arrivals": [],
 "bvue-stop-68007-arrivals": [],
 "bvue-stop-67500-arrivals": [],
@@ -643,9 +660,21 @@ const now = Date.now();
 return data.data.entry.arrivalsAndDepartures
 .filter(item => {
 const routeName = item.shortName || item.routeShortName || "";
-if (routeFilter && routeName.toLowerCase() !== routeFilter.toLowerCase()) return false;
+if (routeFilter) {
+    if (Array.isArray(routeFilter)) {
+        if (!routeFilter.map(r => r.toLowerCase()).includes(routeName.toLowerCase())) return false;
+    } else {
+        if (routeName.toLowerCase() !== routeFilter.toLowerCase()) return false;
+    }
+}
 const destination = item.tripHeadsign || "";
-if (destFilter && !destination.toLowerCase().includes(destFilter.toLowerCase())) return false;
+if (destFilter) {
+    if (Array.isArray(destFilter)) {
+        if (!destFilter.some(df => destination.toLowerCase().includes(df.toLowerCase()))) return false;
+    } else {
+        if (!destination.toLowerCase().includes(destFilter.toLowerCase())) return false;
+    }
+}
 
 const timeToUse = item.predictedArrivalTime || item.scheduledArrivalTime;
 return timeToUse && timeToUse > (now - 60000);
@@ -707,6 +736,12 @@ fetchArrivalsForStop(WESTLAKE_NB_STOP, "westlake-nb-arrivals", null, (time) => [
 { route: "1 Line", dest: "Lynnwood City Center", predictedTime: time + 2 * 60000, isRealTime: false },
 { route: "1 Line", dest: "Lynnwood City Center", predictedTime: time + 10 * 60000, isRealTime: false }
 ], true);
+
+// 5b. Work Section Stop #81301 (Route 333 to Mountlake Terrace & Route 345 to Northgate ONLY)
+fetchArrivalsForStop(WORK_STOP_81301, "work-stop-81301-arrivals", ["333", "345"], (time) => [
+{ route: "333", dest: "Mountlake Terrace", predictedTime: time + 5 * 60000, isRealTime: false },
+{ route: "345", dest: "Northgate", predictedTime: time + 12 * 60000, isRealTime: false }
+], false, ["mountlake", "northgate"]);
 
 // 6. Bellevue: Stop #10912
 fetchArrivalsForStop(BVUE_STOP_10912, "bvue-stop-10912-arrivals", "270", (time) => [
