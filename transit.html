@@ -711,7 +711,7 @@ descText = alert.description_text.translation[0].text || "";
 
 // Only include if headerText or description contains the word "delay" (case-insensitive)
 const combinedText = (headerText + " " + descText).toLowerCase();
-if (combinedText.includes("delay")) {
+if (/delay|suspend|power|disrupt|mechanical|police|track|issue/i.test(combinedText)) {
 alertsHtml += `
 <div class="alert-banner">
 <div class="alert-header">
